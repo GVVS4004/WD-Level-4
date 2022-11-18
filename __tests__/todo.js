@@ -10,6 +10,9 @@ var today = new Date().toLocaleString("en-CA");
 var tommorow = new Date();
 tommorow.setDate(tommorow.getDate() + 1).toLocaleString("en-CA");
 
+var dayBeforeYesterday = new Date();
+dayBeforeYesterday.setDate(dayBeforeYesterday.getDate()-2).toLocaleString;
+
 describe("Testing TodoList Suite", () => {
   beforeAll(() => {
     add({
@@ -32,14 +35,23 @@ describe("Testing TodoList Suite", () => {
       completed: false,
       duedate: tommorow,
     });
+    add({
+      title:"sample Todoitem4",
+      completed:false,
+      duedate: dayBeforeYesterday,
+    })
 
-    expect(all.length).toBe(todoitemscount + 2);
+    expect(all.length).toBe(todoitemscount + 3);
   });
 
   test("Marking a todo item as completed.", () => {
     expect(all[0].completed).toBe(false);
     markAsComplete(0);
     expect(all[0].completed).toBe(true);
+  });
+
+  test("Checking the retrieval of overdue(dayBeforeyesterday) items.", () => {
+    expect(all[3].duedate).toBe(dayBeforeYesterday);
   });
 
   test("Checking the retrieval of overdue(yesterday) items.", () => {
