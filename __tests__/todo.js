@@ -16,7 +16,7 @@ dayBeforeYesterday.setDate(dayBeforeYesterday.getDate()-2).toLocaleString;
 describe("Testing TodoList Suite", () => {
   beforeAll(() => {
     add({
-      title: "Sample Todoitem1",
+      title: "Paneer",
       completed: false,
       duedate: yesterday,
     });
@@ -25,18 +25,18 @@ describe("Testing TodoList Suite", () => {
   test("Adding new todo", () => {
     const todoitemscount = all.length;
     add({
-      title: "Sample Todoitem2",
+      title: "biryani",
       completed: false,
       duedate: today,
     });
 
     add({
-      title: "sample Todoitem3",
+      title: "panipuri",
       completed: false,
       duedate: tommorow,
     });
     add({
-      title:"sample Todoitem4",
+      title:"pizza",
       completed:false,
       duedate: dayBeforeYesterday,
     })
@@ -50,11 +50,11 @@ describe("Testing TodoList Suite", () => {
     expect(all[0].completed).toBe(true);
   });
 
-  test("Checking the retrieval of overdue(dayBeforeyesterday) items.", () => {
+  test("Checking the retrieval of overdue items.", () => {
     expect(all[3].duedate).toBe(dayBeforeYesterday);
   });
 
-  test("Checking the retrieval of overdue(yesterday) items.", () => {
+  test("Checking the retrieval of overdue items.", () => {
     expect(all[0].duedate).toBe(yesterday);
   });
 
